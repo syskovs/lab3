@@ -75,7 +75,7 @@ report = f"""# Отчёт по лабораторной №3: линейные �
 ## Данные и подготовка
 
 - `Student_Performance.csv`: {len(students)} строк, цель – `Performance Index`.
-  Признак `Extracurricular Activities` закодирован как Yes→1, No→0.
+  Признак `Extracurricular Activities` закодирован как Yes – 1, No – 0.
   Разбиение train/test = 80/20, `random_state={SEED}` (train {len(yr_tr)}, test {len(yr_te)}).
 - `german.csv` (разделитель `;`): {len(german)} строк, цель – `Creditability`
   (доля класса 1: {yc.mean():.3f}). Все 20 признаков используются как числовые
