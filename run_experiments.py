@@ -74,10 +74,10 @@ report = f"""# Отчёт по лабораторной №3: линейные �
 
 ## Данные и подготовка
 
-- `Student_Performance.csv`: {len(students)} строк, цель — `Performance Index`.
+- `Student_Performance.csv`: {len(students)} строк, цель – `Performance Index`.
   Признак `Extracurricular Activities` закодирован как Yes→1, No→0.
   Разбиение train/test = 80/20, `random_state={SEED}` (train {len(yr_tr)}, test {len(yr_te)}).
-- `german.csv` (разделитель `;`): {len(german)} строк, цель — `Creditability`
+- `german.csv` (разделитель `;`): {len(german)} строк, цель – `Creditability`
   (доля класса 1: {yc.mean():.3f}). Все 20 признаков используются как числовые
   в исходной кодировке. Разбиение 80/20 со стратификацией, `random_state={SEED}`
   (train {len(yc_tr)}, test {len(yc_te)}).
@@ -91,14 +91,14 @@ report = f"""# Отчёт по лабораторной №3: линейные �
    масштабах от единиц до тысяч), поэтому масштабирование встроено в обучение.
 2. Линейная регрессия: пакетный градиентный спуск по MSE,
    `learning_rate={reg_input.learning_rate}`, `epochs={reg_input.epochs}`, нулевая инициализация.
-   Ход MSE на train: эпоха 1 — {at(reg.loss_history, 1):.4f}, эпоха 10 — {at(reg.loss_history, 10):.4f},
-   эпоха 100 — {at(reg.loss_history, 100):.4f}, последняя — {reg.loss_history[-1]:.4f}.
+   Ход MSE на train: эпоха 1 – {at(reg.loss_history, 1):.4f}, эпоха 10 – {at(reg.loss_history, 10):.4f},
+   эпоха 100 – {at(reg.loss_history, 100):.4f}, последняя – {reg.loss_history[-1]:.4f}.
 3. Логистическая регрессия: пакетный градиентный спуск по бинарной кросс-энтропии,
    `learning_rate={clf_input.learning_rate}`, `epochs={clf_input.epochs}`, порог 0.5.
-   Ход BCE на train: эпоха 1 — {at(clf.loss_history, 1):.4f}, эпоха 10 — {at(clf.loss_history, 10):.4f},
-   эпоха 100 — {at(clf.loss_history, 100):.4f}, последняя — {clf.loss_history[-1]:.4f}.
+   Ход BCE на train: эпоха 1 – {at(clf.loss_history, 1):.4f}, эпоха 10 – {at(clf.loss_history, 10):.4f},
+   эпоха 100 – {at(clf.loss_history, 100):.4f}, последняя – {clf.loss_history[-1]:.4f}.
 4. На том же разбиении обучены готовые LogisticRegression, DecisionTreeClassifier
-   и KNeighborsClassifier (для LR и KNN — StandardScaler в пайплайне).
+   и KNeighborsClassifier (для LR и KNN – StandardScaler в пайплайне).
 
 ## Метрики
 
@@ -121,11 +121,11 @@ report = f"""# Отчёт по лабораторной №3: линейные �
 - Отличие от sklearn LogisticRegression объясняется тем, что там по умолчанию есть
   L2-регуляризация и другой оптимизатор (lbfgs), а собственная модель обучается
   без регуляризации фиксированное число эпох.
-- Дерево и KNN — нелинейные модели. Дерево может ловить пороговые зависимости в
+- Дерево и KNN – нелинейные модели. Дерево может ловить пороговые зависимости в
   категориальных кодах, но склонно к переобучению на 800 объектах; KNN страдает
   от 20-мерного пространства и от того, что категориальные коды трактуются как расстояния.
 - Классы несбалансированы (≈70/30), поэтому Accuracy и Recall класса 1 завышены
-  относительно качества разделения; основная метрика сравнения — ROC-AUC.
+  относительно качества разделения; основная метрика сравнения – ROC-AUC.
 
 ## Воспроизводимость
 
